@@ -1372,8 +1372,8 @@ Continue searching the parent directory? "))
   "Not documented, QUERY."
   (interactive)
   (let ((rootdir (helm-ag--project-root)))
-    (unless rootdir
-      (error "Could not find the project root.  Create a git, hg, or svn repository there first"))
+    (unless rootdir ;; Can't find project root, use `default-directory' instead.
+      (setq rootdir default-directory))
     (helm-ag rootdir query)))
 
 ;;;###autoload
@@ -1381,8 +1381,8 @@ Continue searching the parent directory? "))
   "Not documented, QUERY."
   (interactive)
   (let ((rootdir (helm-ag--project-root)))
-    (unless rootdir
-      (error "Could not find the project root.  Create a git, hg, or svn repository there first"))
+    (unless rootdir ;; Can't find project root, use `default-directory' instead.
+      (setq rootdir default-directory))
     (helm-do-ag rootdir nil query)))
 
 ;;;###autoload
